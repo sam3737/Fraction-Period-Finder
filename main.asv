@@ -1,10 +1,10 @@
 
 GENERATE_DATA = false;
-GENERATE_FRACTIONS = false;
-GENERATE_EQ_DATA = false;
+GENERATE_FRACTIONS = fals;
+GENERATE_EQ_DATA = true;
 
 DATA_MAX_DENOMINATOR = 10000;
-FRACTIONS_LENGTH = 100000;
+FRACTIONS_LENGTH = 10000;
 
 if GENERATE_DATA
     disp("Generating data")
@@ -14,12 +14,15 @@ disp("Loading data")
 load data.mat;
 
 
-if GENERATE_FRACTIONS
-    disp("Generating fractions")
-    everyFraction(FRACTIONS_LENGTH, true);
-end
-disp("Loading fractions")
-load everyFraction.mat;
+% if GENERATE_FRACTIONS
+%     disp("Generating fractions")
+%     everyFraction(FRACTIONS_LENGTH, true);
+% end
+% disp("Loading fractions")
+% load everyFraction.mat;
+
+fractions = 1:100000;
+fractions = fractions.^-1;
 
 if GENERATE_EQ_DATA
     disp("Generatig equation data")
@@ -43,13 +46,3 @@ title('Fraction vs. Frequency')
 xlabel('Fraction')
 ylabel('Frequency')
 bar(fractions(1:20), numRemoved(1:20))
-
-figure(3)
-hold on
-title('Culled Denominator vs. Culled Period')
-xlabel('Denominator')
-ylabel('Period')
-scatter(culledDenominators, culledPeriods, 2, 'ok')
-
-numRemoved = numRemoved(1:find(numRemoved == 0, 1, 'first')-1);
-fractions = fractions(1:length(numRemoved));

@@ -1,5 +1,5 @@
 
-function [fractions, numRemoved] = removeEquation(saveData)
+function [fractions, numRemoved, denominators, periods] = removeEquation(saveData)
 
     % default save to false
     if ~exist('saveData','var')
@@ -32,8 +32,11 @@ function [fractions, numRemoved] = removeEquation(saveData)
     fractions = sortedFractions;
     numRemoved = sortedNumRemoved;
     
+    culledDenominators = denominators;
+    culledPeriods = periods;
+
     % if save is true, save in a .mat file
     if saveData
-        save('equationData.mat', 'fractions', 'numRemoved');
+        save('equationData.mat', 'fractions', 'numRemoved', 'culledDenominators', 'culledPeriods');
     end
 end
