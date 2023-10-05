@@ -1,0 +1,27 @@
+
+function [denominators, periods] = generateData(max)
+    MAX_DENOMINATOR = 100000;
+    denominators = zeros(1, MAX_DENOMINATOR);
+    periods = zeros(1, MAX_DENOMINATOR);
+    counter = 0;
+    
+    for x = 1:MAX_DENOMINATOR
+        period = findPeriod(x);
+        if period ~= -1
+            counter = counter + 1;
+            denominators(counter) = x;
+            periods(counter) = period;
+        end
+    end
+    
+    % Trim excess zeros if needed
+    denominators = denominators(1:counter);
+    periods = periods(1:counter);
+    
+    figure(1)
+    title('Denominator vs. Period')
+    xlabel('Denominator')
+    ylabel('Period')
+    scatter(denominators, periods, 2, 'ok')
+    save('data.mat', 'denominators', 'periods');
+end

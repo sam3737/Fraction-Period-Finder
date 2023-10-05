@@ -41,7 +41,10 @@ function out = findPeriod(denominator, max)
         out = -1;
     else
         for i=1:max
+            
+            % calculate the indicator
             logModiDenom = logMod(i, denominator);
+
             % if mod(10^i, denominator) is 1, i is the period
             if logModiDenom == 1 
                 out = i;
