@@ -1,7 +1,8 @@
 # Fraction-Period-Finder
+
 Gets a user input and finds the period of a simplified fraction with that denominator.
 
-## Files
+## Fuctions
 
 ### findPeriod.m
 
@@ -39,3 +40,21 @@ Returns an array of length `len` of every simplified fraction, starting with the
 Removes points from the denominator/period set described by `period == ceil(denominator*fraction)-1` for every fraction in `everyFraction.mat`. Returns the parallel arrays `fractions` and `numRemoved` which contain the fractions and associated number of points removed, sorted in descending order as well as the new set of denominators and periods with points removed. If `saveData` is true, the variables `fractions`, `numRemoved`, `culledDenominators`, and `culledPeriods` in the file `equationData.mat`.
 
 ***
+
+## Data Files
+
+### data.mat
+
+* `denominators` - denominators which had their periods calculated
+* `periods` - the periods of the denominators (paralle to `denominators`)
+
+### equationData.mat
+
+* `culledDenominators` - `denominators` with trends removed
+* `culledPeriods` - `periods` with trends removed
+* `removeFractions` - fractions used in trends
+* `numRemoved` - number of points removed in each trend (parallel to `removeFractions`)
+
+### fractions.mat
+
+* `fractions` - list of fractions to use in trend removal
