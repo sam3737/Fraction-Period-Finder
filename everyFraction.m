@@ -35,6 +35,6 @@ function out = everyFraction(len, saveData)
     % if save is true, save in a .mat file
     if saveData
         fractions = out;
-        save('everyFraction.mat', 'fractions');
+        save('fractions.mat', 'fractions');
     end
 end

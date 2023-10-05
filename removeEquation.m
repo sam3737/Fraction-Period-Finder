@@ -29,7 +29,7 @@ function [fractions, numRemoved, denominators, periods] = removeEquation(saveDat
     % parallel sort numRemoved and fractions
     [sortedNumRemoved, sortIndex] = sort(numRemoved, 'descend');
     sortedFractions = fractions(sortIndex);
-    fractions = sortedFractions;
+    removeFractions = sortedFractions;
     numRemoved = sortedNumRemoved;
     
     culledDenominators = denominators;
@@ -37,6 +37,6 @@ function [fractions, numRemoved, denominators, periods] = removeEquation(saveDat
 
     % if save is true, save in a .mat file
     if saveData
-        save('equationData.mat', 'fractions', 'numRemoved', 'culledDenominators', 'culledPeriods');
+        save('equationData.mat', 'removeFractions', 'numRemoved', 'culledDenominators', 'culledPeriods');
     end
 end
