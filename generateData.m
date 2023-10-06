@@ -37,7 +37,7 @@ function [denominators, periods] = generateData(maxDenominator, findPeriodFuncti
             periods(counter) = period;
         end
 
-        if mod(x,1000) == 0
+        if saveData && mod(x,1000) == 0
             save('data.mat', 'denominators', 'periods');
             disp("Saving data at denominator = " + x);
         end

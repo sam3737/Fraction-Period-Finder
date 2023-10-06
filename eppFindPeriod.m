@@ -1,16 +1,11 @@
 %{
-Fraction Period Finder
+Euler Phi Factors Find Period
 Sam McDowell
 Updated 10/3/23
 %}
 
 % find the period of a simplified fraction from a denominator
-function out = findPeriod(denominator, max)
-
-    % default max to infinity
-    if ~exist('max','var')
-        max = inf;
-    end
+function out = eppFindPeriod(denominator)
 
     % if denominator is 0, return infity
     if denominator == 0
@@ -40,8 +35,7 @@ function out = findPeriod(denominator, max)
     if denominator == 1
         out = -1;
     else
-        i=1;
-        while true
+        for i=eulerPhiFactors(denominator)
             
             % calculate the indicator
             logModiDenom = logMod(i, denominator);
@@ -55,8 +49,6 @@ function out = findPeriod(denominator, max)
                 out = 2*i;
                 return
             end
-
-            i = i+1;
         end
     end
 end

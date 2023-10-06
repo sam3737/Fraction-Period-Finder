@@ -1,3 +1,3 @@
-function out = checkEquation(x, y, m, b)
-    out = y == ceil(m*x) + b;
+function ind = checkEquation(x, y, m, b)
+    ind = y == ceil(m*x) + b;
 end

@@ -1,5 +1,5 @@
 
-function [removeFractions, numRemoved, culledDenominators, culledPeriods] = removeEquation(saveData)
+function [fractions, numRemoved, denominators, periods] = removeEquation(saveData)
 
     % default save to false
     if ~exist('saveData','var')
@@ -14,15 +14,16 @@ function [removeFractions, numRemoved, culledDenominators, culledPeriods] = remo
     numRemoved = zeros(1,length(fractions));
 
     for fractionIndex = 1:length(fractions)
-
         initialLength = length(denominators);
+        % for i = length(denominators):-1:1
+        %     x = denominators(i);
+        %     y = periods(i);
+        %     if y == ceil(x*fractions(fractionIndex))-1
+        %         denominators(i) = [];
+        %         periods(i) = [];
+        %     end
+        % end
         
-        % remove matching points
-        ind = checkEquation(denominators, periods, fractions(fractionIndex), -1);
-        denominators = denominators(~ind);
-        periods = periods(~ind);
-        
-        % compare how many were removed
         numRemoved(fractionIndex) = initialLength - length(denominators);
     end
     
