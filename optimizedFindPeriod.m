@@ -60,11 +60,13 @@ function out = optimizedFindPeriod(denominator, max)
             end
         end
         if out == -2
-            for i=1:max
+            i=1;
+            while true
                 
                 % calculate the indicator
                 logModiDenom = logMod(i, denominator);
-    
+                i = i+1;
+
                 % if mod(10^i, denominator) is 1, i is the period
                 if logModiDenom == 1 
                     out = i;

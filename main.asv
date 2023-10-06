@@ -1,19 +1,19 @@
 
 GENERATE_DATA = false;
-GENERATE_FRACTIONS = true;
-GENERATE_EQ_DATA = true;
+GENERATE_FRACTIONS = false;
+GENERATE_EQ_DATA = false;
+
+RECIPROCAL_FRACTIONS_ONLY = true;
 
 DATA_MAX_DENOMINATOR = 10000;
 FRACTIONS_LENGTH = 100000;
-RECIPROCAL_FRACTIONS_ONLY = false;
-PERIOD_ALGORITHM = @optimizedFindPeriod;
 
 if GENERATE_DATA
     disp("Generating data")
-    generateData(DATA_MAX_DENOMINATOR, PERIOD_ALGORITHM, true);
+    generateData(DATA_MAX_DENOMINATOR, true);
 end
 disp("Loading data")
-load dataFiles/data.mat;
+load data.mat;
 
 
 if GENERATE_FRACTIONS
@@ -22,18 +22,18 @@ if GENERATE_FRACTIONS
         everyFraction(FRACTIONS_LENGTH, true);
     else
         fractions = (1:FRACTIONS_LENGTH).^-1;
-        save("dataFiles/fractions.mat", "fractions")
+        save(data)
     end
 end
 disp("Loading fractions")
-load dataFiles/everyFraction.mat;
+load everyFraction.mat;
 
 if GENERATE_EQ_DATA
     disp("Generatig equation data")
     removeEquation(true);
 end
 disp("Loading equation data")
-load dataFiles/equationData.mat;
+load equationData.mat;
 
 
 figure(1)
@@ -58,5 +58,5 @@ xlabel('Denominator')
 ylabel('Period')
 scatter(culledDenominators, culledPeriods, 2, 'ok')
 
-relevantNumRemoved = numRemoved(1:find(numRemoved == 0, 1, 'first')-1);
-relevantFractions = fractions(1:length(numRemoved));
+numRemoved = numRemoved(1:find(numRemoved == 0, 1, 'first')-1);
+fractions = fractions(1:length(numRemoved));

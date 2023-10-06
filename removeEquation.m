@@ -7,8 +7,8 @@ function [fractions, numRemoved, denominators, periods] = removeEquation(saveDat
     end
 
     % load variables
-    load data.mat denominators periods
-    load everyFraction.mat fractions
+    load dataFiles/data.mat denominators periods
+    load dataFiles/fractions.mat fractions
     
     % intialize output
     numRemoved = zeros(1,length(fractions));
@@ -37,6 +37,6 @@ function [fractions, numRemoved, denominators, periods] = removeEquation(saveDat
 
     % if save is true, save in a .mat file
     if saveData
-        save('equationData.mat', 'removeFractions', 'numRemoved', 'culledDenominators', 'culledPeriods');
+        save('dataFiles/equationData.mat', 'removeFractions', 'numRemoved', 'culledDenominators', 'culledPeriods');
     end
 end
