@@ -1,4 +1,10 @@
 % A full accuracy number expressed as both a fraction and decimal
+% Usage:
+% ex. fullNumber(17,14,'fraction')
+%   The value of 17/14 as both a fraction and period base combination
+% ex. fullNumber([1,2],[1,3,7,5,2,6],'decimal')
+%   The value of 1.2137526 (137526 repeating) as a fraction and period base
+%   combination.
 classdef fullNumber
 
     properties
