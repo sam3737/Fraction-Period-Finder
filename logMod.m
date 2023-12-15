@@ -10,7 +10,7 @@ function out = logMod(a,b)
     % employ mod(a*b, c) = mod(mod(a, c) * mod(b, c), c) for c > a & c > b
     while true
 
-        % if coun't wouldn't surpass a
+        % if count wouldn't surpass a
         if count + maxExponent < a
             total = mod(total * mod(10^maxExponent, b), b);
             count = count + maxExponent;
