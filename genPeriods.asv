@@ -1,0 +1,16 @@
+noPeriod = [];
+oddPeriod = [];
+evenNoPattern = [];
+pattern = [];
+for i=2:100
+    n = fullNumber(1,i,"fraction");
+    if isempty(n.period)
+        noPeriod = [noPeriod, i];
+    elseif mod(length(n.period),2) ~= 0
+        oddPeriod = [oddPeriod, i];
+    elseif all(addVectors(n.period(length(n.period)/2+1:end), n.period(1:length(n.period)/2))==9)
+        pattern = [pattern, i];
+    else
+        evenNoPattern = [evenNoPattern,i];
+    end
+end
